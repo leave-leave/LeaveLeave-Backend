@@ -1,11 +1,11 @@
-package com.example.leavetest
+package com.example.leaveleave
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class LeaveTestApplication
+class LeaveLeaveApplication
 
 fun main(args: Array<String>) {
-    runApplication<LeaveTestApplication>(*args)
+    runApplication<LeaveLeaveApplication>(*args)
 }
