@@ -44,6 +44,8 @@ dependencies {
     // database
     implementation ("mysql:mysql-connector-java:8.0.28")
     implementation ("org.springframework.boot:spring-boot-starter-data-redis")
+    implementation ("org.springframework.boot:spring-boot-starter-data-jpa")
+    runtimeOnly ("com.mysql:mysql-connector-j")
 
     implementation ("com.amazonaws:aws-java-sdk-s3:1.12.281")
     annotationProcessor ("org.springframework.boot:spring-boot-configuration-processor")
