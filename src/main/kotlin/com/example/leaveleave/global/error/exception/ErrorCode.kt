@@ -10,6 +10,9 @@ enum class ErrorCode(
     NOT_ALLOW_SELF_APPLICATION(400, "Not Allow Self Application"),
     BAD_FILE_EXTENSION(400, "Bad File Extension"),
 
+    TOKEN_INVALID(401, "Token Invalid"),
+    TOKEN_EXPIRED(401, "Token Expired"),
+
     USER_NOT_FOUND(404, "User Not Found"),
     BOARD_NOT_FOUND(404, "Feed Not Found"),
 
