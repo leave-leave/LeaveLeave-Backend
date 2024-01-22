@@ -1,9 +1,9 @@
 package com.example.leaveleave.domain.user.domain
 
 import com.example.leaveleave.global.entity.BaseUUIDEntity
-import jakarta.persistence.Column
-import jakarta.persistence.Entity
-import jakarta.persistence.Id
+import javax.persistence.Column
+import javax.persistence.Entity
+import javax.persistence.Id
 
 @Entity(name = "tbl_user")
 class User(
