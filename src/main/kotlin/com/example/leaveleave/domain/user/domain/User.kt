@@ -12,7 +12,7 @@ class User(
     @Column(length = 15, nullable = false)
     var accountId: String,
 
-    @Column(length = 20, nullable = false)
+    @Column(length = 200, nullable = false)
     var password: String,
 
     @Column(length = 5, nullable = false)
