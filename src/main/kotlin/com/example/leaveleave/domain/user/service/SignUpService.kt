@@ -20,6 +20,7 @@ class SignUpService(
         checkUser(request)
         userRepository.save(User(request.accountId, passwordEncoder.encode(request.password),request.name,request.phoneNumber))
     }
+
     private fun checkUser(request: SignUpRequest){
         if(userFacade.checkAccountIdExist(request.accountId)){
             throw AlreadyAccountIdException
