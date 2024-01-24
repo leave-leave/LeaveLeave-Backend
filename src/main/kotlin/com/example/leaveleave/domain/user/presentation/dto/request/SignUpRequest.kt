@@ -6,7 +6,7 @@ import javax.validation.constraints.Size
 
 data class SignUpRequest(
     @field:NotBlank(message = "null, 공백, 띄어쓰기를 허용하지 않습니다.")
-    @field:Size(min = 11, max = 12, message = "11자 ~ 12자까지 입력 가능합니다.")
+    @field:Size(min = 11, max = 20, message = "11자 ~ 12자까지 입력 가능합니다.")
     val phoneNumber: String,
 
     @field:NotBlank(message = "null, 공백, 띄어쓰기를 허용하지 않습니다.")
