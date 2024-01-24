@@ -1,5 +1,6 @@
 package com.example.leaveleave.domain.user.presentation
 
+import com.example.leaveleave.domain.user.presentation.dto.request.SignInRequest
 import com.example.leaveleave.domain.user.presentation.dto.request.SignUpRequest
 import com.example.leaveleave.domain.user.presentation.dto.response.TokenResponse
 import com.example.leaveleave.domain.user.presentation.dto.response.UserInfoResponse
@@ -30,7 +31,7 @@ class UserController(
 
     @ResponseStatus(HttpStatus.OK)
     @PostMapping("/login")
-    fun login(@RequestBody @Valid request: SignUpRequest): TokenResponse{
+    fun login(@RequestBody @Valid request: SignInRequest): TokenResponse{
         return signInService.execute(request)
     }
 
