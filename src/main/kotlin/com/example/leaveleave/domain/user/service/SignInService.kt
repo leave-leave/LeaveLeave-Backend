@@ -2,6 +2,7 @@ package com.example.leaveleave.domain.user.service
 
 import com.example.leaveleave.domain.user.exception.IncorrectPasswordException
 import com.example.leaveleave.domain.user.facade.UserFacade
+import com.example.leaveleave.domain.user.presentation.dto.request.SignInRequest
 import com.example.leaveleave.domain.user.presentation.dto.request.SignUpRequest
 import com.example.leaveleave.domain.user.presentation.dto.response.TokenResponse
 import com.example.leaveleave.global.security.jwt.TokenProvider
@@ -16,7 +17,7 @@ class SignInService(
     private val tokenProvider: TokenProvider,
 ){
     @Transactional
-    fun execute(request: SignUpRequest): TokenResponse{
+    fun execute(request: SignInRequest): TokenResponse{
         val user = userFacade.getByAccountId(request.accountId)
         if(!passwordEncoder.matches(request.password, user.password)){
             throw IncorrectPasswordException
