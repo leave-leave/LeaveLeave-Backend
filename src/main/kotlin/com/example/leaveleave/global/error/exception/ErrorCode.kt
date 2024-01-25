@@ -14,7 +14,7 @@ enum class ErrorCode(
     TOKEN_EXPIRED(401, "Token Expired"),
 
     USER_NOT_FOUND(404, "User Not Found"),
-    BOARD_NOT_FOUND(404, "Feed Not Found"),
+    FEED_NOT_FOUND(404, "Feed Not Found"),
 
     ALREADY_ACCOUNT_ID(409, "Already Account Id"),
 
