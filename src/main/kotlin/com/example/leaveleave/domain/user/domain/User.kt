@@ -8,7 +8,6 @@ import javax.persistence.Id
 @Entity(name = "tbl_user")
 class User(
     @Id
-
     @Column(length = 15, nullable = false)
     var accountId: String,
 
