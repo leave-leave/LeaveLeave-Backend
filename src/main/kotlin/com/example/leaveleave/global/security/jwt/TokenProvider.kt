@@ -40,16 +40,17 @@ class TokenProvider(
     }
 
     private fun createToken(accountId: String,typ: String, exp: Long): String {
-        return Jwts.builder()
-            .setSubject(accountId)
-            .claim("typ",typ)
-            .signWith(SignatureAlgorithm.ES256, tokenProperties.secretKey)
-            .setExpiration(Date(System.currentTimeMillis() + exp + 1000))
-            .setIssuedAt(Date())
-            .compact()
+            return Jwts.builder()
+                .setSubject(accountId)
+                .claim("typ",typ)
+                .signWith(SignatureAlgorithm.HS256, tokenProperties.secretKey)
+                .setExpiration(Date(System.currentTimeMillis() + exp * 1000))
+                .setIssuedAt(Date(System.currentTimeMillis()))
+                .compact()
     }
 
     fun getAuthentication(token: String) : UsernamePasswordAuthenticationToken{
+        println(getAccountId(token))
         val userDetails : UserDetails = authDetailsService.loadUserByUsername(getAccountId(token))
         return UsernamePasswordAuthenticationToken(userDetails, "", userDetails.authorities)
     }
@@ -74,7 +75,7 @@ class TokenProvider(
 
     fun resolveToken(request: HttpServletRequest): String? {
 
-        val bearerToken = request.getHeader(tokenProperties.prefix)
+        val bearerToken = request.getHeader(tokenProperties.header)
 
         return if(StringUtils.hasText(bearerToken) && bearerToken.startsWith(tokenProperties.prefix)
             && bearerToken.length > tokenProperties.prefix.length + 1
