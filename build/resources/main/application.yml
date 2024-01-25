@@ -9,11 +9,16 @@ spring:
     database: mysql
     database-platform: org.hibernate.dialect.MySQL8Dialect
     hibernate:
-      ddl-auto: none
+      ddl-auto: update
     properties:
       hibernate:
         format_sql: true
     show-sql: true
+
+  redis:
+    host: ${REDIS_HOST:localhost}
+    port: ${REDIS_PORT:6379}
+    password: ${REDIS_PASSWORD:your-redis-password}
 
   jackson:
     property-naming-strategy: SNAKE_CASE
@@ -31,6 +36,20 @@ jwt:
   refresh_exp: 86400
   header: Authorization
   prefix: Bearer
+
+cloud:
+  aws:
+    s3:
+      prefix: ${AWS_S3_PREFIX:/}
+      bucket: ${AWS_S3_BUCKET:LeaveLeave/}
+      base-image-url: ${AWS_S3_URL:LeaveLeave}
+    region:
+      static: ${AWS_S3_REGION:ap-northeast-2}
+    stack:
+      auto: false
+    credentials:
+      access-key: ${AWS_S3_ACCESS}
+      secret-key: ${AWS_S3_SECRET}
 
 #  jwt:
 #    secret_key: ${JWT_SECRET_KEY}
