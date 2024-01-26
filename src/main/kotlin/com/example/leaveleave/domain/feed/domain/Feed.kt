@@ -21,6 +21,8 @@ class Feed(
     @Column(columnDefinition = "VARCHAR(500)", nullable = false)
     var content: String,
 
+    var like: Int = 0
+
 ) : BaseUUIDEntity() {
     fun updateFeed(title: String,content: String){
         this.title = title
