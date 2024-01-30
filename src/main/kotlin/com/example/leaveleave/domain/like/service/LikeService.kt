@@ -7,32 +7,33 @@ import com.example.leaveleave.domain.like.domain.repository.LikeRepository
 import com.example.leaveleave.domain.like.exception.AlreadyExistsLikeException
 import com.example.leaveleave.domain.user.domain.repository.UserRepository
 import com.example.leaveleave.domain.user.exception.UserNotFoundException
+import com.example.leaveleave.domain.user.facade.UserFacade
 import org.springframework.boot.autoconfigure.neo4j.Neo4jProperties.Authentication
 import org.springframework.stereotype.Service
 
 @Service
 class LikeService(
     private val likeRepository: LikeRepository,
-    private val userRepository: UserRepository,
     private val feedRepository: FeedRepository,
+    private val userFacade: UserFacade
 ) {
-    fun createLike(userId: String,feedId: Long){
-        val user = userRepository.findById(userId).orElseThrow {UserNotFoundException}
+    fun createLike(feedId: Long){
+        val user = userFacade.getCurrentUser()
         val feed = feedRepository.findById(feedId).orElseThrow {FeedNotFoundException}
 
-        val existingLike = likeRepository.findByFeedIdAndUserId(feedId,userId)
+        val existingLike = likeRepository.findByFeedIdAndUserId(feedId,user.accountId)
         if(existingLike == null){
-            likeRepository.save(Like(userId = userId, feedId = feedId))
+            likeRepository.save(Like(userId = user.accountId, feedId = feedId))
         } else {
             throw AlreadyExistsLikeException
         }
     }
 
-    fun cancelLike(userId: String,feedId: Long){
-        val user = userRepository.findById(userId).orElseThrow {UserNotFoundException}
+    fun cancelLike(feedId: Long){
+        val user = userFacade.getCurrentUser()
         val feed = feedRepository.findById(feedId).orElseThrow {FeedNotFoundException}
 
-        val existingLike = likeRepository.findByFeedIdAndUserId(feedId, userId)
+        val existingLike = likeRepository.findByFeedIdAndUserId(feedId, user.accountId)
         if(existingLike != null){
             likeRepository.delete(existingLike)
         } else {
