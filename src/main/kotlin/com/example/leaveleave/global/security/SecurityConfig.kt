@@ -3,6 +3,7 @@ package com.example.leaveleave.global.security
 import com.example.leaveleave.global.config.FilterConfig
 import com.example.leaveleave.global.security.jwt.TokenProvider
 import com.fasterxml.jackson.databind.ObjectMapper
+import org.apache.catalina.security.SecurityUtil
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
@@ -40,4 +41,9 @@ class SecurityConfig(
     }
     @Bean
     fun passwordEncoder(): PasswordEncoder = BCryptPasswordEncoder()
+
+//    @Bean
+//    fun securityUtils(): SecurityUtil{
+//        return SecurityUtil()
+//    }
 }
