@@ -21,6 +21,7 @@ class CreateFeedService(
                 user,
                 request.title,
                 request.content,
+
             )
         )
     }
