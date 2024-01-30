@@ -6,6 +6,7 @@ import com.example.leaveleave.domain.feed.presentation.dto.request.CreateFeedReq
 import com.example.leaveleave.domain.user.facade.UserFacade
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
+import java.time.LocalDateTime
 
 @Service
 class CreateFeedService(
@@ -21,7 +22,7 @@ class CreateFeedService(
                 user,
                 request.title,
                 request.content,
-
+                LocalDateTime.now(),
             )
         )
     }
