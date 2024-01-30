@@ -3,7 +3,6 @@ package com.example.leaveleave.domain.user.service
 import com.example.leaveleave.domain.user.exception.IncorrectPasswordException
 import com.example.leaveleave.domain.user.facade.UserFacade
 import com.example.leaveleave.domain.user.presentation.dto.request.SignInRequest
-import com.example.leaveleave.domain.user.presentation.dto.request.SignUpRequest
 import com.example.leaveleave.domain.user.presentation.dto.response.TokenResponse
 import com.example.leaveleave.global.security.jwt.TokenProvider
 import org.springframework.security.crypto.password.PasswordEncoder

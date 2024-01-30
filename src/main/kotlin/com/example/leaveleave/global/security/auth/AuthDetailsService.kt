@@ -4,7 +4,6 @@ import com.example.leaveleave.domain.user.facade.UserFacade
 import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.security.core.userdetails.UserDetailsService
 import org.springframework.stereotype.Service
-import javax.persistence.Id
 
 @Service
 class AuthDetailsService(

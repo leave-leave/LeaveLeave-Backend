@@ -1,6 +1,5 @@
 package com.example.leaveleave.global.error.exception
 
-import com.example.leaveleave.global.error.exception.ErrorCode
 
 abstract class LeaveLeaveException(
     val errorCode: ErrorCode,
