@@ -13,7 +13,5 @@ class Like(
     val feedId: Long,
 
     @Column(name = "user_id")
-    val userId: Long,
-
-    val cancellable: Boolean = false
+    val userId: String,
 )
