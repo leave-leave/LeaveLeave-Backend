@@ -7,7 +7,7 @@ class Like(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "like_id")
-    val likeId: Long? = null,
+    val likeId: Long? = 0,
 
     @Column(name = "feed_id")
     val feedId: Long,
