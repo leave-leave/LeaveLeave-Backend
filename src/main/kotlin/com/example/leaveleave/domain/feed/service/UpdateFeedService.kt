@@ -6,7 +6,6 @@ import com.example.leaveleave.domain.feed.presentation.dto.request.UpdateFeedReq
 import com.example.leaveleave.domain.user.facade.UserFacade
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
-import java.util.UUID
 
 @Service
 data class UpdateFeedService(

@@ -1,6 +1,5 @@
 package com.example.leaveleave.domain.user.domain
 
-import com.example.leaveleave.global.entity.BaseUUIDEntity
 import javax.persistence.Column
 import javax.persistence.Entity
 import javax.persistence.Id
@@ -20,7 +19,7 @@ class User(
     @Column(length = 20, nullable = false)
     var phoneNumber: String,
 
-) : BaseUUIDEntity() {
+){
     fun updateUserInfo(name: String) {
         this.name = name
     }
