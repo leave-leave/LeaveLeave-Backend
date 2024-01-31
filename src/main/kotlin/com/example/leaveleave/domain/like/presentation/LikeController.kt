@@ -21,7 +21,7 @@ class LikeController(
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("/{feed-id}")
-    fun cancelLike(@PathVariable("feed-id") feedId: Long, authentication: Authentication){
+    fun cancelLike(@PathVariable("feed-id") feedId: Long){
         likeService.cancelLike(feedId)
     }
 }
