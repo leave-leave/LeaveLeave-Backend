@@ -23,5 +23,6 @@ data class DeleteFeedService(
             throw IncorrectUserException
         }
         feedRepository.delete(feed)
+
     }
 }

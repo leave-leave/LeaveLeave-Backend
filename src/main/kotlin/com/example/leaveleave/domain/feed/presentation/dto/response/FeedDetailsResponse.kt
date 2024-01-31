@@ -6,4 +6,5 @@ data class FeedDetailsResponse (
     val title: String,
     val content: String,
     val username: String,
+    val comment: String
 )
