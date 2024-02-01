@@ -1,27 +1,24 @@
 package com.example.leaveleave.domain.feed.service
 
+import com.example.leaveleave.domain.comment.domain.repository.CommentRepository
+import com.example.leaveleave.domain.feed.domain.Feed
 import com.example.leaveleave.domain.feed.domain.repository.FeedRepository
-import com.example.leaveleave.domain.feed.facade.FeedFacade
-import com.example.leaveleave.domain.feed.presentation.dto.response.PageFeedListResponse
-import com.example.leaveleave.domain.user.facade.UserFacade
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
-import org.springframework.data.domain.Pageable
+import javax.persistence.EntityNotFoundException
 
 @Service
-class SearchFeedService(
-    private val userFacade: UserFacade,
-    private val feedFacade: FeedFacade,
+class GetFeedService(
+    private val commentRepository: CommentRepository,
     private val feedRepository: FeedRepository,
 ) {
-    @Transactional(readOnly = true)
-    fun execute(keyword: String, pageable: Pageable): PageFeedListResponse{
-        val user = userFacade.getCurrentUser()
-        val feeds = feedRepository.findAllByTitleContainingOrderByCreatedAtAsc(keyword,pageable)
-        return PageFeedListResponse(
-            feeds.totalPages,
-            feeds.totalPages.equals(pageable.pageNumber + 1),
-            feedFacade.getFeedList(feeds.content, user)
-        )
+    @Transactional
+    fun getFeedWithComment(feedId: Long): Feed{
+        val feed = feedRepository.findById(feedId)
+            .orElseThrow{(EntityNotFoundException("Feed not found with id : $feedId"))}
+
+        val comments = commentRepository.findById(feedId)
+
+        return feed
     }
 }
