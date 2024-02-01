@@ -14,5 +14,5 @@ data class Question (
     val id: Long? = null,
 
     @Column(columnDefinition = "varchar(255)")
-    val question: String? = null
+    val question: String
 )
