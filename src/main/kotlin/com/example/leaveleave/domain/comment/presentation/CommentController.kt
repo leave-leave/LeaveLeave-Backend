@@ -23,17 +23,13 @@ class CommentController(
 ) {
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/add/{feed-id}")
-    fun addComment(@PathVariable("feed-id") feedId: Long, @RequestBody @Valid body: CommentRequest){
+    fun addComment(@PathVariable("feed-id") feedId: Long, @RequestBody @Valid body: CommentRequest) {
         commentService.addComment(feedId, body.comment)
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("/delete/{comment-id}")
-    fun deleteComment(@PathVariable("comment-id") commentId: Long){
+    fun deleteComment(@PathVariable("comment-id") commentId: Long) {
         commentService.minusComment(commentId)
     }
-
-
-
-
 }

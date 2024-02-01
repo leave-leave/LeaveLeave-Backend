@@ -2,13 +2,7 @@ package com.example.leaveleave.domain.comment.domain
 
 import com.example.leaveleave.domain.feed.domain.Feed
 import com.example.leaveleave.domain.user.domain.User
-import javax.persistence.Column
-import javax.persistence.Entity
-import javax.persistence.GeneratedValue
-import javax.persistence.GenerationType
-import javax.persistence.Id
-import javax.persistence.JoinColumn
-import javax.persistence.ManyToOne
+import javax.persistence.*
 
 
 @Entity(name = "tbl_comment")
@@ -20,7 +14,7 @@ data class Comment(
     @Column(columnDefinition = "TEXT" , nullable = false)
     val comment: String,
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "feed_id")
     var feed: Feed? = null,
 

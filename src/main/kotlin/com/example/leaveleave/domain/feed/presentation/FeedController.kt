@@ -1,11 +1,15 @@
 package com.example.leaveleave.domain.feed.presentation
 
+import com.example.leaveleave.domain.feed.domain.Feed
+import com.example.leaveleave.domain.feed.domain.repository.FeedRepository
 import com.example.leaveleave.domain.feed.presentation.dto.request.CreateFeedRequest
 import com.example.leaveleave.domain.feed.presentation.dto.request.UpdateFeedRequest
+import com.example.leaveleave.domain.feed.presentation.dto.response.FeedElement
+import com.example.leaveleave.domain.feed.presentation.dto.response.FeedListResponse
 import com.example.leaveleave.domain.feed.presentation.dto.response.PageFeedListResponse
 import com.example.leaveleave.domain.feed.service.CreateFeedService
 import com.example.leaveleave.domain.feed.service.DeleteFeedService
-import com.example.leaveleave.domain.feed.service.SearchFeedService
+import com.example.leaveleave.domain.feed.service.GetFeedService
 import com.example.leaveleave.domain.feed.service.UpdateFeedService
 import org.springframework.data.web.PageableDefault
 import org.springframework.http.HttpStatus
@@ -20,7 +24,7 @@ import org.springframework.web.bind.annotation.ResponseStatus
 import org.springframework.web.bind.annotation.RestController
 import javax.validation.Valid
 import org.springframework.data.domain.Pageable
-
+import org.springframework.http.ResponseEntity
 
 
 @RequestMapping("/feeds")
@@ -28,8 +32,8 @@ import org.springframework.data.domain.Pageable
 class FeedController(
     private val createFeedService: CreateFeedService,
     private val updateFeedService: UpdateFeedService,
-    private val deleteFeedService: DeleteFeedService,
-    private val searchFeedService: SearchFeedService,
+    private val getFeedService: GetFeedService,
+    private val feedRepository: FeedRepository
 ) {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @PostMapping
@@ -46,12 +50,13 @@ class FeedController(
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("/{feed-id}")
     fun deleteFeed(@PathVariable("feed-id") feedId: Long){
-        deleteFeedService.execute(feedId)
+        feedRepository.deleteById(feedId)
     }
 
-    @GetMapping()
-    fun searchFeed(@PathVariable("keyword") keyword: String, @PageableDefault(size = 12) pageable: Pageable) : PageFeedListResponse{
-        return searchFeedService.execute(keyword,pageable)
+    @GetMapping("/{feed-id}")
+    fun getFeed(@PathVariable("feed-id") feedId: Long) : ResponseEntity<Feed>{
+        val feed = getFeedService.getFeedWithComment(feedId)
+        return ResponseEntity.ok(feed)
     }
 
 }
