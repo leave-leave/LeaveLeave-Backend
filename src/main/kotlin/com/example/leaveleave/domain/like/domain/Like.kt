@@ -1,5 +1,6 @@
 package com.example.leaveleave.domain.like.domain
 
+import com.example.leaveleave.domain.feed.domain.Feed
 import javax.persistence.*
 
 @Entity(name = "tbl_like")
@@ -14,4 +15,8 @@ class Like(
 
     @Column(name = "user_id")
     val userId: String,
+
+//    @ManyToOne
+//    @JoinColumn(name = "feed-id")
+//    val feed: Feed? = null
 )
