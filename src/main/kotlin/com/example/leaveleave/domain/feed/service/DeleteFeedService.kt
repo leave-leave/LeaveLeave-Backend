@@ -15,14 +15,7 @@ data class DeleteFeedService(
     private val feedRepository: FeedRepository,
 ) {
     @Transactional
-    fun execute(feedId: Long){
-        val feed = feedFacade.getByFeedId(feedId)
-        val user = userFacade.getCurrentUser()
-
-        if(user != feed.user){
-            throw IncorrectUserException
-        }
-        feedRepository.delete(feed)
-
+    fun deleteFeed(feedId: Long){
+        feedRepository.deleteById(feedId)
     }
 }
