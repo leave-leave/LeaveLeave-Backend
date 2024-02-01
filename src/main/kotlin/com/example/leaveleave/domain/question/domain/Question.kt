@@ -11,7 +11,7 @@ import javax.persistence.Id
 data class Question (
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long? = null,
+    val id: Long,
 
     @Column(columnDefinition = "varchar(255)")
     val question: String
