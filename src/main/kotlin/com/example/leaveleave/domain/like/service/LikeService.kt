@@ -17,27 +17,23 @@ class LikeService(
     private val feedRepository: FeedRepository,
     private val userFacade: UserFacade
 ) {
-    fun createLike(feedId: Long){
+    fun createLike(feedId: Long) {
         val user = userFacade.getCurrentUser()
-        val feed = feedRepository.findById(feedId).orElseThrow {FeedNotFoundException}
+        val feed = feedRepository.findById(feedId).orElseThrow { FeedNotFoundException }
 
-        val existingLike = likeRepository.findByFeedIdAndUserId(feedId,user.accountId)
-        if(existingLike == null){
-            likeRepository.save(Like(userId = user.accountId, feedId = feedId))
-        } else {
+        val isExistLike = likeRepository.existsByFeedAndUser(feed, user)
+        if (isExistLike) {
             throw AlreadyExistsLikeException
         }
+
+        likeRepository.save(Like(user = user, feed = feed))
     }
 
-    fun cancelLike(feedId: Long){
+    fun cancelLike(feedId: Long) {
         val user = userFacade.getCurrentUser()
-        val feed = feedRepository.findById(feedId).orElseThrow {FeedNotFoundException}
+        val feed = feedRepository.findById(feedId).orElseThrow { FeedNotFoundException }
 
-        val existingLike = likeRepository.findByFeedIdAndUserId(feedId, user.accountId)
-        if(existingLike != null){
-            likeRepository.delete(existingLike)
-        } else {
-            throw AlreadyExistsLikeException
-        }
+        val like = likeRepository.getByFeedAndUser(feed, user)
+        likeRepository.delete(like)
     }
 }
