@@ -14,7 +14,7 @@ import javax.persistence.Id
 class Feed(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(columnDefinition = "BIGINT", nullable = false)
+    @Column(name = "feed_id", columnDefinition = "BIGINT", nullable = false)
     val feedId: Long?,
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -29,12 +29,9 @@ class Feed(
 
     val createdAt: LocalDateTime,
 
+    // TODO: orphanRemoval = true <- 이거 선빠이한테 질문하기
     @OneToMany(mappedBy = "feed", cascade = [CascadeType.ALL], orphanRemoval = true)
     val comment: MutableList<Comment> = mutableListOf(),
-
-//    @OneToMany(mappedBy = "feed", cascade = [CascadeType.ALL], orphanRemoval = true)
-//    val likes: MutableList<Like> = mutableListOf()
-
 ){
     fun updateFeed(title: String,content: String){
         this.title = title
