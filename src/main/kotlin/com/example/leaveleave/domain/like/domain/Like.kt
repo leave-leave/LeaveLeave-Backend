@@ -1,6 +1,7 @@
 package com.example.leaveleave.domain.like.domain
 
 import com.example.leaveleave.domain.feed.domain.Feed
+import com.example.leaveleave.domain.user.domain.User
 import javax.persistence.*
 
 @Entity(name = "tbl_like")
@@ -10,13 +11,11 @@ class Like(
     @Column(name = "like_id")
     val likeId: Long? = 0,
 
-    @Column(name = "feed_id")
-    val feedId: Long,
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "account_id", columnDefinition = "VARCHAR(15)", nullable = false)
+    val user: User,
 
-    @Column(name = "user_id")
-    val userId: String,
-
-//    @ManyToOne
-//    @JoinColumn(name = "feed-id")
-//    val feed: Feed? = null
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "feed_id", columnDefinition = "BIGINT", nullable = false)
+    val feed: Feed
 )
