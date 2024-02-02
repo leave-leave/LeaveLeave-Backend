@@ -19,7 +19,7 @@ data class Comment(
     var feed: Feed? = null,
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "account_id")
     var user: User? = null
 ){
     fun save(feed: Feed, user: User){
