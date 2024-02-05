@@ -1,0 +1,19 @@
+package com.example.leaveleave.domain.plan.domain
+
+import javax.persistence.*
+
+@Entity(name = "tbl_todo_list")
+class PlanTodoList(
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    val id: Long? = null,
+
+    @Column(columnDefinition = "VARCHAR(40)", nullable = false)
+    var detailContent: String,
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "todo_id")
+    var plan: Plan
+    ) {
+    constructor(detailContent: String,plan: Plan): this(null, detailContent, plan)
+}
