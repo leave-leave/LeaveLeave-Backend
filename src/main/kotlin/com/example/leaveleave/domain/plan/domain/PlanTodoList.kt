@@ -6,14 +6,14 @@ import javax.persistence.*
 class PlanTodoList(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long? = null,
+    val id: Long,
 
     @Column(columnDefinition = "VARCHAR(40)", nullable = false)
     var detailContent: String,
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "todo_id")
+    @JoinColumn(name = "plan_id")
     var plan: Plan
     ) {
-    constructor(detailContent: String,plan: Plan): this(null, detailContent, plan)
+    constructor(detailContent: String,plan: Plan): this(0,detailContent, plan)
 }

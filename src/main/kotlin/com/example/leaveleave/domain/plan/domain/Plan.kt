@@ -13,21 +13,19 @@ class Plan (
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "plan_id")
-    var user: User? = null,
+    var user: User,
 
     @Column(name = "start_date")
-    @Temporal(TemporalType.TIMESTAMP)
-    var startDate: LocalDateTime? = null,
+    var startDate: LocalDateTime,
 
     @Column(name = "end_date")
-    @Temporal(TemporalType.TIMESTAMP)
-    var endDate: LocalDateTime? = null,
+    var endDate: LocalDateTime,
 
     @Column(name = "title")
-    var title: String? = null
+    var title: String
 
 ){
-    fun save(user: User, startDate: LocalDateTime, endDate: LocalDateTime){
+    fun save(user: User){
         this.user = user
         this.startDate = startDate
         this.endDate = endDate
