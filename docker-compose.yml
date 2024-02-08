@@ -11,9 +11,9 @@ services:
     image: openjdk:11
     env_file: .env
     environment:
-      PASSWORD: 12345678
-      URL: jdbc:mysql://localhost:3306/leaveleave
-      USERNAME: root
+      PASSWORD: ${PASSWORD}
+      URL: ${URL}
+      USERNAME: ${USERNAME}
 
 #    networks:
 #      - test_network
