@@ -12,7 +12,7 @@ class Plan (
     val id: Long? = null,
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "plan_id")
+    @JoinColumn(name = "user_id")
     var user: User,
 
     @Column(name = "start_date")
@@ -25,8 +25,7 @@ class Plan (
     var title: String
 
 ){
-    fun save(user: User){
-        this.user = user
+    fun save(user: User, startDate: LocalDateTime,endDate: LocalDateTime,title: String){
         this.startDate = startDate
         this.endDate = endDate
         this.title = title

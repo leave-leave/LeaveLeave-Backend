@@ -1,6 +1,8 @@
 package com.example.leaveleave.domain.user.domain
 
 import com.example.leaveleave.domain.feed.domain.Feed
+import com.fasterxml.jackson.annotation.JsonCreator
+import com.fasterxml.jackson.annotation.JsonProperty
 import javax.persistence.Column
 import javax.persistence.Entity
 import javax.persistence.Id
@@ -23,6 +25,9 @@ class User(
     @Column(length = 20, nullable = false)
     var phoneNumber: String,
 ) {
+    @JsonCreator
+    constructor(@JsonProperty("userId") userId: String) : this(userId,"","","")
+
     fun updateUserInfo(name: String) {
         this.name = name
     }
