@@ -7,10 +7,7 @@ import com.example.leaveleave.domain.feed.presentation.dto.request.UpdateFeedReq
 import com.example.leaveleave.domain.feed.presentation.dto.response.FeedElement
 import com.example.leaveleave.domain.feed.presentation.dto.response.FeedListResponse
 import com.example.leaveleave.domain.feed.presentation.dto.response.PageFeedListResponse
-import com.example.leaveleave.domain.feed.service.CreateFeedService
-import com.example.leaveleave.domain.feed.service.DeleteFeedService
-import com.example.leaveleave.domain.feed.service.GetFeedService
-import com.example.leaveleave.domain.feed.service.UpdateFeedService
+import com.example.leaveleave.domain.feed.service.*
 import org.springframework.data.web.PageableDefault
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.DeleteMapping
@@ -33,7 +30,8 @@ class FeedController(
     private val createFeedService: CreateFeedService,
     private val updateFeedService: UpdateFeedService,
     private val getFeedService: GetFeedService,
-    private val feedRepository: FeedRepository
+    private val feedRepository: FeedRepository,
+    private val getListService: GetListService
 ) {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @PostMapping
@@ -53,10 +51,17 @@ class FeedController(
         feedRepository.deleteById(feedId)
     }
 
+    @ResponseStatus(HttpStatus.OK)
     @GetMapping("/{feed-id}")
     fun getFeed(@PathVariable("feed-id") feedId: Long) : ResponseEntity<Feed>{
         val feed = getFeedService.getFeedWithComment(feedId)
         return ResponseEntity.ok(feed)
     }
 
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping()
+    fun getListFeed(){
+        val feed = getListService.execute()
+        return feed
+    }
 }
