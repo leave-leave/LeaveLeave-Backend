@@ -5,7 +5,7 @@ plugins {
     id("io.spring.dependency-management") version "1.0.12.RELEASE"
     kotlin("jvm") version "1.7.22"
     kotlin("plugin.spring") version "1.7.22"
-    kotlin("plugin.jpa") version "1.6.21"
+    kotlin("plugin.jpa") version "1.7.22"
 
 }
 
@@ -26,35 +26,34 @@ dependencies {
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     // developmentOnly
-    developmentOnly ("org.springframework.boot:spring-boot-devtools")
+    developmentOnly("org.springframework.boot:spring-boot-devtools")
 
     // validation
-    implementation ("org.springframework.boot:spring-boot-starter-validation:2.7.3")
+    implementation("org.springframework.boot:spring-boot-starter-validation:2.7.3")
 
     // jwt
-    implementation ("io.jsonwebtoken:jjwt:0.9.0")
+    implementation("io.jsonwebtoken:jjwt:0.9.0")
 
     // security
-    implementation ("org.springframework.boot:spring-boot-starter-security")
+    implementation("org.springframework.boot:spring-boot-starter-security")
 
     // web
-    implementation ("org.springframework.boot:spring-boot-starter-web")
+    implementation("org.springframework.boot:spring-boot-starter-web")
 
     // lombok
-    compileOnly ("org.projectlombok:lombok")
-    annotationProcessor ("org.projectlombok:lombok")
+    compileOnly("org.projectlombok:lombok")
+    annotationProcessor("org.projectlombok:lombok")
 
     // database
-    implementation ("mysql:mysql-connector-java:8.0.28")
-    implementation ("org.springframework.boot:spring-boot-starter-data-redis")
-    implementation ("org.springframework.boot:spring-boot-starter-data-jpa")
-    runtimeOnly ("com.mysql:mysql-connector-j")
+    implementation("mysql:mysql-connector-java:8.0.28")
+    implementation("org.springframework.boot:spring-boot-starter-data-redis")
+    runtimeOnly("com.mysql:mysql-connector-j")
 
-    implementation ("com.amazonaws:aws-java-sdk-s3:1.12.281")
-    annotationProcessor ("org.springframework.boot:spring-boot-configuration-processor")
+    implementation("com.amazonaws:aws-java-sdk-s3:1.12.281")
+    annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
 
     // jpa
-    implementation ("org.springframework.boot:spring-boot-starter-data-jpa")
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 
 }
 
@@ -75,14 +74,9 @@ allOpen {
     annotation("javax.persistence.Embeddable")
 }
 
-tasks.getByName<Jar>("jar") {
-    enabled = false
-}
-
 configurations {
     create("myConfiguration") {
         isCanBeResolved = true
         isCanBeConsumed = false
     }
 }
-
