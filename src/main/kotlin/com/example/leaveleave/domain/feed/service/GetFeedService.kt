@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.Transactional
 import javax.persistence.EntityNotFoundException
 
 @Service
-class GetFeedService(
+data class GetFeedService(
     private val commentRepository: CommentRepository,
     private val feedRepository: FeedRepository,
 ) {
