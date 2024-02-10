@@ -17,12 +17,12 @@ class SignUpService(
 ) {
     @Transactional
     fun execute(request: SignUpRequest){
-        checkUser(request)
+        checkUser(request.accountId)
         userRepository.save(User(request.accountId, passwordEncoder.encode(request.password),request.name,request.phoneNumber))
     }
 
-    private fun checkUser(request: SignUpRequest){
-        if(userFacade.checkAccountIdExist(request.accountId)){
+    fun checkUser(accountId: String){
+        if(userFacade.checkAccountIdExist(accountId)){
             throw AlreadyAccountIdException
         }
     }

@@ -1,5 +1,6 @@
 package com.example.leaveleave.domain.user.service
 
+import com.example.leaveleave.domain.user.domain.repository.UserRepository
 import com.example.leaveleave.domain.user.exception.IncorrectPasswordException
 import com.example.leaveleave.domain.user.facade.UserFacade
 import com.example.leaveleave.domain.user.presentation.dto.request.SignInRequest
