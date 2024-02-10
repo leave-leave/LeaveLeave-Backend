@@ -27,11 +27,15 @@ class Feed(
     @Column(columnDefinition = "VARCHAR(500)", nullable = false)
     var content: String,
 
+
     val createdAt: LocalDateTime,
+
+    @OneToMany(mappedBy = "feed", cascade = [CascadeType.ALL], orphanRemoval = true)
+    val likeList: MutableList<Like> = mutableListOf(),
 
     // TODO: orphanRemoval = true <- 이거 선빠이한테 질문하기
     @OneToMany(mappedBy = "feed", cascade = [CascadeType.ALL], orphanRemoval = true)
-    val comment: MutableList<Comment> = mutableListOf(),
+    val commentList: MutableList<Comment> = mutableListOf(),
 ){
     fun updateFeed(title: String,content: String){
         this.title = title
