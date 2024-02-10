@@ -12,6 +12,6 @@ class UserInfoService(
     @Transactional(readOnly = true)
     fun execute(): UserInfoResponse{
         val user = userFacade.getCurrentUser()
-        return UserInfoResponse(user.accountId)
+        return UserInfoResponse(user.accountId, user.name)
     }
 }
