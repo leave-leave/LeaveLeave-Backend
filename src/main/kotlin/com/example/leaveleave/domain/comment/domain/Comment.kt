@@ -16,11 +16,11 @@ data class Comment(
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "feed_id")
-    var feed: Feed? = null,
+    var feed: Feed,
 
     @ManyToOne
     @JoinColumn(name = "account_id")
-    var user: User? = null
+    var user: User
 ){
     fun save(feed: Feed, user: User){
         this.feed = feed
