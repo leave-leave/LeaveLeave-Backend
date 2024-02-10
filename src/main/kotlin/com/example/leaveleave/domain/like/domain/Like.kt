@@ -2,6 +2,7 @@ package com.example.leaveleave.domain.like.domain
 
 import com.example.leaveleave.domain.feed.domain.Feed
 import com.example.leaveleave.domain.user.domain.User
+import com.fasterxml.jackson.annotation.JsonIgnore
 import javax.persistence.*
 
 @Entity(name = "tbl_like")
