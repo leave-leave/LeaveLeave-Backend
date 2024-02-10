@@ -9,6 +9,7 @@ import com.example.leaveleave.domain.user.service.SignUpService
 import com.example.leaveleave.domain.user.service.UserInfoService
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
@@ -35,7 +36,14 @@ class UserController(
         return signInService.execute(request)
     }
 
-    @GetMapping
+    @GetMapping("/{account-id}")
+    fun checkUser(@PathVariable("account-id") accountId:String){
+        return signUpService.checkUser(accountId)
+    }
+
+
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("/user")
     fun getUserInfo(): UserInfoResponse{
         return userInfoService.execute()
     }
