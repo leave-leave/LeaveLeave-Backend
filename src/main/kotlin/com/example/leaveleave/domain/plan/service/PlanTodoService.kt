@@ -17,13 +17,13 @@ class PlanTodoService(
         planTodoRepository.save(todo)
     }
 
-    fun getTodosForPlan(planId: Long): List<PlanTodoList>{
-        val plan : Plan = planService.getPlanById(planId) ?: throw IllegalArgumentException("plan not found")
+    fun getTodosForPlan(planId: Long): List<PlanTodoList> {
+        val plan: Plan = planService.getPlanById(planId) ?: throw IllegalArgumentException("plan not found")
 
         return planTodoRepository.findByPlan(plan)
     }
 
-    fun deleteTodo(todoId: Long){
+    fun deleteTodo(todoId: Long) {
         planTodoRepository.deleteById(todoId)
     }
 }

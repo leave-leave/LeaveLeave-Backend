@@ -6,7 +6,7 @@ import javax.persistence.*
 
 
 @Entity(name = "tbl_plan")
-class Plan (
+class Plan(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null,
@@ -24,8 +24,8 @@ class Plan (
     @Column(name = "title")
     var title: String
 
-){
-    fun save(user: User, startDate: LocalDateTime,endDate: LocalDateTime,title: String){
+) {
+    fun save(user: User, startDate: LocalDateTime, endDate: LocalDateTime, title: String) {
         this.startDate = startDate
         this.endDate = endDate
         this.title = title

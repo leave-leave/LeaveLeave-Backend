@@ -14,6 +14,6 @@ class PlanTodoList(
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "plan_id")
     var plan: Plan
-    ) {
-    constructor(detailContent: String,plan: Plan): this(0,detailContent, plan)
+) {
+    constructor(detailContent: String, plan: Plan) : this(0, detailContent, plan)
 }

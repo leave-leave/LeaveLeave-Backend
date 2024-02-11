@@ -18,18 +18,18 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 @RequestMapping("/plans")
-class PlanController (
+class PlanController(
     private val planService: PlanService
 ) {
     @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
     fun addPlan(@RequestBody planRequest: PlanRequest) {
-        return planService.savePlan(planRequest.userId ,planRequest.startDate, planRequest.endDate, planRequest.title)
+        return planService.savePlan(planRequest.userId, planRequest.startDate, planRequest.endDate, planRequest.title)
     }
 
     @GetMapping("/{plan-id}")
     @ResponseStatus(HttpStatus.OK)
-    fun getPlan(@PathVariable("plan-id") planId: Long) : ResponseEntity<PlanResponse> {
+    fun getPlan(@PathVariable("plan-id") planId: Long): ResponseEntity<PlanResponse> {
         try {
             val plan = planService.getPlanById(planId)
         } catch (ex: PlanNotFoundException) {
@@ -42,7 +42,7 @@ class PlanController (
 
     @DeleteMapping("/{plan-id}")
     @ResponseStatus(HttpStatus.OK)
-    fun deletePlan(@PathVariable ("plan-id") planId: Long){
+    fun deletePlan(@PathVariable("plan-id") planId: Long) {
         planService.deletePlan(planId)
     }
 }

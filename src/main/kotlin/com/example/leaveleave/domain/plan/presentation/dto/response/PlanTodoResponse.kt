@@ -8,8 +8,8 @@ data class PlanTodoResponse(
     val detailContent: String,
     val plan: Plan
 ) {
-    companion object{
-        fun fromEntity(planTodoList: PlanTodoList) : PlanTodoResponse{
+    companion object {
+        fun fromEntity(planTodoList: PlanTodoList): PlanTodoResponse {
             return PlanTodoResponse(
                 id = planTodoList.id,
                 detailContent = planTodoList.detailContent,
