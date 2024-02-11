@@ -9,8 +9,8 @@ import org.springframework.data.repository.query.Param
 import org.springframework.stereotype.Repository
 
 @Repository
-interface LikeRepository : JpaRepository <Like, Long> {
-    fun getByFeedAndUser(feed : Feed, user : User): Like
-    fun existsByFeedAndUser(feed : Feed, user : User): Boolean
+interface LikeRepository : JpaRepository<Like, Long> {
+    fun getByFeedAndUser(feed: Feed, user: User): Like
+    fun existsByFeedAndUser(feed: Feed, user: User): Boolean
     fun findAllByUser(user: User): List<Like>
 }

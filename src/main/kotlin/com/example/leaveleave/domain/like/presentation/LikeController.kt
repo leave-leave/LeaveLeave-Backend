@@ -15,13 +15,13 @@ class LikeController(
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/{feed-id}")
-    fun createLike(@PathVariable("feed-id") feedId: Long){
+    fun createLike(@PathVariable("feed-id") feedId: Long) {
         likeService.createLike(feedId)
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("/{feed-id}")
-    fun cancelLike(@PathVariable("feed-id") feedId: Long){
+    fun cancelLike(@PathVariable("feed-id") feedId: Long) {
         likeService.cancelLike(feedId)
     }
 }
