@@ -26,7 +26,7 @@ class User(
     var phoneNumber: String,
 ) {
     @JsonCreator
-    constructor(@JsonProperty("userId") userId: String) : this(userId,"","","")
+    constructor(@JsonProperty("userId") userId: String) : this(userId, "", "", "")
 
     fun updateUserInfo(name: String) {
         this.name = name

@@ -14,7 +14,7 @@ data class SignUpRequest(
     val name: String,
 
     @field:NotBlank(message = "null, 공백, 띄어쓰기를 허용하지 않습니다.")
-    @field:Size(min = 8, max = 15 , message = "8자 ~ 15자까지 입력 가능합니다.")
+    @field:Size(min = 8, max = 15, message = "8자 ~ 15자까지 입력 가능합니다.")
     val accountId: String,
 
     @field:NotBlank

@@ -26,25 +26,25 @@ class UserController(
 ) {
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/signup")
-    fun signup(@RequestBody @Valid request: SignUpRequest){
+    fun signup(@RequestBody @Valid request: SignUpRequest) {
         signUpService.execute(request)
     }
 
     @ResponseStatus(HttpStatus.OK)
     @PostMapping("/login")
-    fun login(@RequestBody @Valid request: SignInRequest): TokenResponse{
+    fun login(@RequestBody @Valid request: SignInRequest): TokenResponse {
         return signInService.execute(request)
     }
 
     @GetMapping("/{account-id}")
-    fun checkUser(@PathVariable("account-id") accountId:String){
+    fun checkUser(@PathVariable("account-id") accountId: String) {
         return signUpService.checkUser(accountId)
     }
 
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/user")
-    fun getUserInfo(): UserInfoResponse{
+    fun getUserInfo(): UserInfoResponse {
         return userInfoService.execute()
     }
 }

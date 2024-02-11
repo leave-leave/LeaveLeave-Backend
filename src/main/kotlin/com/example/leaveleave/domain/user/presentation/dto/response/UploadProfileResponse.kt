@@ -1,5 +1,5 @@
 package com.example.leaveleave.domain.user.presentation.dto.response
 
-data class UploadProfileResponse (
+data class UploadProfileResponse(
     val url: String
 )

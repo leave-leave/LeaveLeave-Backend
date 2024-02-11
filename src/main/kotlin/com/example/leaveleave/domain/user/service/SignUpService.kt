@@ -16,13 +16,20 @@ class SignUpService(
     private val passwordEncoder: PasswordEncoder,
 ) {
     @Transactional
-    fun execute(request: SignUpRequest){
+    fun execute(request: SignUpRequest) {
         checkUser(request.accountId)
-        userRepository.save(User(request.accountId, passwordEncoder.encode(request.password),request.name,request.phoneNumber))
+        userRepository.save(
+            User(
+                request.accountId,
+                passwordEncoder.encode(request.password),
+                request.name,
+                request.phoneNumber
+            )
+        )
     }
 
-    fun checkUser(accountId: String){
-        if(userFacade.checkAccountIdExist(accountId)){
+    fun checkUser(accountId: String) {
+        if (userFacade.checkAccountIdExist(accountId)) {
             throw AlreadyAccountIdException
         }
     }
