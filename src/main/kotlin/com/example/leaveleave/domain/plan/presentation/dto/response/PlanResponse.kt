@@ -12,12 +12,12 @@ data class PlanResponse(
     val endDate: LocalDateTime,
     val title: String
 ) {
-    companion object{
-        fun fromEntity(plan: Plan) : PlanResponse{
+    companion object {
+        fun fromEntity(plan: Plan): PlanResponse {
             return PlanResponse(
                 id = plan.id,
                 userId = plan.user,
-                startDate =  plan.startDate,
+                startDate = plan.startDate,
                 endDate = plan.endDate,
                 title = plan.title
             )

@@ -18,20 +18,20 @@ class PlanTodoController(
 ) {
     @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
-    fun addTodoPlan(@RequestParam planId: Long, @RequestParam detailContent: String){
-        return todoService.addTodoPlan(planId,detailContent)
+    fun addTodoPlan(@RequestParam planId: Long, @RequestParam detailContent: String) {
+        return todoService.addTodoPlan(planId, detailContent)
     }
 
     @GetMapping("/{plan_id}")
     @ResponseStatus(HttpStatus.OK)
-    fun getTodoPlan(@PathVariable ("plan_id") planId: Long){
+    fun getTodoPlan(@PathVariable("plan_id") planId: Long) {
         val todo = todoService.getTodosForPlan(planId)
         val todoDetails = todo.map { it.detailContent }
     }
 
     @DeleteMapping("/{todo_id}")
     @ResponseStatus(HttpStatus.OK)
-    fun deleteTodo(@PathVariable ("todo_id") todoId: Long){
+    fun deleteTodo(@PathVariable("todo_id") todoId: Long) {
         return todoService.deleteTodo(todoId)
     }
 }
