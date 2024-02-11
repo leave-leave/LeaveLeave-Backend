@@ -13,10 +13,10 @@ data class UpdateFeedService(
     private val userFacade: UserFacade,
 ) {
     @Transactional
-    fun execute(feedId: Long, request: UpdateFeedRequest){
+    fun execute(feedId: Long, request: UpdateFeedRequest) {
         val feed = feedFacade.getByFeedId(feedId)
         val user = userFacade.getCurrentUser()
-        if(user != feed.user){
+        if (user != feed.user) {
             throw IncorrectUserException
         }
         feed.updateFeed(request.title, request.content)

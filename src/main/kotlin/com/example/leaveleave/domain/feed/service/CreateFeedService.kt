@@ -12,9 +12,9 @@ import java.time.LocalDateTime
 data class CreateFeedService(
     private val feedRepository: FeedRepository,
     private val userFacade: UserFacade,
-){
+) {
     @Transactional
-    fun execute(request: CreateFeedRequest){
+    fun execute(request: CreateFeedRequest) {
         val user = userFacade.getCurrentUser()
         val feed = feedRepository.save(
             Feed(

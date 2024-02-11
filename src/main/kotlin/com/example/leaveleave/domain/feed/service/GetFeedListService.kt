@@ -10,7 +10,7 @@ class GetFeedListService(
     private val feedRepository: FeedRepository,
     private val userFacade: UserFacade
 ) {
-    fun execute(): List<FeedListResponse>{
+    fun execute(): List<FeedListResponse> {
         val user = userFacade.getCurrentUser()
         val feedList = feedRepository.findAll()
 

@@ -11,11 +11,12 @@ import org.springframework.stereotype.Component
 class FeedFacade(
     private val feedRepository: FeedRepository,
 ) {
-    fun getByFeedId(feedID: Long): Feed{
-        return feedRepository.findById(feedID).orElseThrow{FeedNotFoundException}
+    fun getByFeedId(feedID: Long): Feed {
+        return feedRepository.findById(feedID).orElseThrow { FeedNotFoundException }
     }
-    fun getFeedList(feeds: List<Feed>, user: User): List<LikeFeedListResponse>{
-        return feeds.map{feed ->
+
+    fun getFeedList(feeds: List<Feed>, user: User): List<LikeFeedListResponse> {
+        return feeds.map { feed ->
             LikeFeedListResponse(feed.feedId, feed.title, feed.content)
 
         }

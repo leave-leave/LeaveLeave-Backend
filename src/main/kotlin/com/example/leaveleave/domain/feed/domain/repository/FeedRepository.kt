@@ -9,6 +9,6 @@ import org.springframework.data.jpa.repository.Query
 import org.springframework.data.repository.query.Param
 import java.util.Optional
 
-interface FeedRepository : JpaRepository <Feed, Long> {
+interface FeedRepository : JpaRepository<Feed, Long> {
     fun findAllByTitleContainingOrderByCreatedAtAsc(title: String, pageable: Pageable): Page<Feed>
 }

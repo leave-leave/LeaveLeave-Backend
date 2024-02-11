@@ -15,7 +15,7 @@ data class DeleteFeedService(
     private val feedRepository: FeedRepository,
 ) {
     @Transactional
-    fun deleteFeed(feedId: Long){
+    fun deleteFeed(feedId: Long) {
         feedRepository.deleteById(feedId)
     }
 }

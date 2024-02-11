@@ -71,7 +71,7 @@ class FeedController(
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping()
-    fun getFeedList(): List<FeedListResponse>{
+    fun getFeedList(): List<FeedListResponse> {
         return getFeedListService.execute()
     }
 }

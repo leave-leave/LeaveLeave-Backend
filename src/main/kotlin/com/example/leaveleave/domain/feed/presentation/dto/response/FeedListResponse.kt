@@ -20,9 +20,9 @@ data class FeedListUserResponse(
 data class FeedListCommentResponse(
     val user: FeedListUserResponse,
     val comment: String
-){
-    companion object{
-        fun format(comment: Comment): FeedListCommentResponse{
+) {
+    companion object {
+        fun format(comment: Comment): FeedListCommentResponse {
             return FeedListCommentResponse(
                 user = FeedListUserResponse.format(comment.user),
                 comment = comment.comment
