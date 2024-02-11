@@ -8,7 +8,7 @@ import javax.persistence.Id
 
 
 @Entity(name = "tbl_question")
-data class Question (
+data class Question(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long,

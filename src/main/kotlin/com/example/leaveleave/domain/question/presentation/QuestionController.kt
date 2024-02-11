@@ -10,7 +10,7 @@ class QuestionController(
     private val questionService: QuestionService
 ) {
     @GetMapping("/question")
-    fun getQuestion(): List<Question>{
+    fun getQuestion(): List<Question> {
         return questionService.getQuestion()
     }
 
