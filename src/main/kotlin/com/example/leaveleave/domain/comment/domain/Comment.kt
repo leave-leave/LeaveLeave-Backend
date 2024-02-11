@@ -11,7 +11,7 @@ data class Comment(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null,
 
-    @Column(columnDefinition = "TEXT" , nullable = false)
+    @Column(columnDefinition = "TEXT", nullable = false)
     val comment: String,
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -21,8 +21,8 @@ data class Comment(
     @ManyToOne
     @JoinColumn(name = "account_id")
     var user: User
-){
-    fun save(feed: Feed, user: User){
+) {
+    fun save(feed: Feed, user: User) {
         this.feed = feed
         this.user = user
     }

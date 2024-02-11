@@ -20,9 +20,9 @@ class CommentService(
     fun addComment(feedId: Long, comment: String) {
         val user = userFacade.getCurrentUser()
         val feed = feedRepository.findById(feedId)
-            .orElseThrow { IllegalArgumentException("해당 게시글이 없습니다. id=$feedId")}
+            .orElseThrow { IllegalArgumentException("해당 게시글이 없습니다. id=$feedId") }
 
-        commentRepository.save(Comment(null,comment,feed,user))
+        commentRepository.save(Comment(null, comment, feed, user))
     }
 
     @Transactional
