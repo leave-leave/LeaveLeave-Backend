@@ -22,8 +22,7 @@ class Plan(
     var endDate: LocalDateTime,
 
     @Column(name = "title")
-    var title: String
-
+    var title: String,
 ) {
     fun save(user: User, startDate: LocalDateTime, endDate: LocalDateTime, title: String) {
         this.startDate = startDate
