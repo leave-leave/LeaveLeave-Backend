@@ -5,6 +5,7 @@ import com.example.leaveleave.domain.plan.exception.PlanNotFoundException
 import com.example.leaveleave.domain.plan.presentation.dto.request.PlanRequest
 import com.example.leaveleave.domain.plan.presentation.dto.response.PlanResponse
 import com.example.leaveleave.domain.plan.service.PlanService
+import com.example.leaveleave.domain.user.domain.User
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.DeleteMapping
@@ -24,7 +25,7 @@ class PlanController(
     @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
     fun addPlan(@RequestBody planRequest: PlanRequest) {
-        return planService.savePlan(planRequest.userId, planRequest.startDate, planRequest.endDate, planRequest.title)
+        return planService.addPlan(planRequest.userId, planRequest.startDate, planRequest.endDate, planRequest.title)
     }
 
     @GetMapping("/{plan-id}")
