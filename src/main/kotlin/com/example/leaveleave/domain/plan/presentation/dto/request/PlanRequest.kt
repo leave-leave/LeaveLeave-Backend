@@ -4,7 +4,7 @@ import com.example.leaveleave.domain.user.domain.User
 import java.time.LocalDateTime
 
 data class PlanRequest(
-    val userId: User,
+    val userId: String,
     val startDate: LocalDateTime,
     val endDate: LocalDateTime,
     val title: String
