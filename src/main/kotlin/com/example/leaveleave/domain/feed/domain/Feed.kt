@@ -27,7 +27,6 @@ class Feed(
     @Column(columnDefinition = "VARCHAR(500)", nullable = false)
     var content: String,
 
-
     val createdAt: LocalDateTime,
 
     @OneToMany(mappedBy = "feed", cascade = [CascadeType.ALL], orphanRemoval = true)
