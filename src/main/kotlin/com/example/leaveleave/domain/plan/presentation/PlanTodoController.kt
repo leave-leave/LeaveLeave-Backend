@@ -1,6 +1,7 @@
 package com.example.leaveleave.domain.plan.presentation
 
 import com.example.leaveleave.domain.plan.service.PlanTodoService
+import com.example.leaveleave.domain.user.domain.User
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
@@ -18,20 +19,13 @@ class PlanTodoController(
 ) {
     @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
-    fun addTodoPlan(@RequestParam planId: Long, @RequestParam detailContent: String) {
+    fun addTodoPlan(@RequestParam planId: Long,  @RequestParam detailContent: String) {
         return todoService.addTodoPlan(planId, detailContent)
     }
 
-    @GetMapping("/{plan_id}")
+    @DeleteMapping("/{todo-id}")
     @ResponseStatus(HttpStatus.OK)
-    fun getTodoPlan(@PathVariable("plan_id") planId: Long) {
-        val todo = todoService.getTodosForPlan(planId)
-        val todoDetails = todo.map { it.detailContent }
-    }
-
-    @DeleteMapping("/{todo_id}")
-    @ResponseStatus(HttpStatus.OK)
-    fun deleteTodo(@PathVariable("todo_id") todoId: Long) {
+    fun deleteTodo(@PathVariable("todo-id") todoId: Long) {
         return todoService.deleteTodo(todoId)
     }
 }
