@@ -25,7 +25,7 @@ class PlanController(
     @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
     fun addPlan(@RequestBody planRequest: PlanRequest) {
-        return planService.addPlan(planRequest.userId, planRequest.startDate, planRequest.endDate, planRequest.title)
+        return planService.addPlan(planRequest)
     }
 
     @GetMapping("/{plan-id}")
