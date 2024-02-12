@@ -55,6 +55,9 @@ dependencies {
     // jpa
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 
+    // coolSms
+    implementation ("net.nurigo:javaSDK:2.2")
+
 }
 
 tasks.withType<KotlinCompile> {
