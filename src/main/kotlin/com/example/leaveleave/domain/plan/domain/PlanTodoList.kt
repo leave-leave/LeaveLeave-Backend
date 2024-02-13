@@ -6,7 +6,7 @@ import javax.persistence.*
 class PlanTodoList(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long,
+    val id: Long? = null,
 
     @Column(columnDefinition = "VARCHAR(40)", nullable = false)
     var detailContent: String,
@@ -15,5 +15,5 @@ class PlanTodoList(
     @JoinColumn(name = "plan_id")
     var plan: Plan
 ) {
-    constructor(detailContent: String, plan: Plan) : this(0, detailContent, plan)
+    constructor(detailContent: String, plan: Plan) : this(0, detailContent =  detailContent, plan)
 }
