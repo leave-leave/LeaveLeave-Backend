@@ -5,5 +5,5 @@ import com.example.leaveleave.domain.plan.domain.PlanTodoList
 import org.springframework.data.jpa.repository.JpaRepository
 
 interface PlanTodoRepository : JpaRepository<PlanTodoList, Long> {
-    fun findByPlanId(planId: Long): List<PlanTodoList>
+    fun getAllByPlanId(planId: Long): List<PlanTodoList>
 }
