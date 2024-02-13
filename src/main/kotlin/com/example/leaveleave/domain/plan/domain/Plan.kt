@@ -26,8 +26,8 @@ class Plan(
     @Column(name = "title")
     var title: String,
 
-    @OneToMany(mappedBy = "plan", cascade = [CascadeType.ALL], orphanRemoval = true)
-    val planTodoList: MutableList<Plan> = mutableListOf(),
+    @OneToMany(mappedBy = "plan", fetch = FetchType.LAZY, cascade = [CascadeType.ALL])
+    val todoList: List<PlanTodoList> = mutableListOf()
 ) {
     fun save(user: User, startDate: ZonedDateTime, endDate: ZonedDateTime, title: String) {
         this.startDate = startDate
