@@ -6,7 +6,7 @@ import javax.persistence.*
 class PlanTodoList(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long? = null,
+    val id: Long?,
 
     @Column(columnDefinition = "VARCHAR(40)", nullable = false)
     var detailContent: String,
