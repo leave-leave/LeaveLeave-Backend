@@ -7,21 +7,21 @@ import com.example.leaveleave.domain.user.domain.User
 import java.time.ZonedDateTime
 
 data class PlanResponse(
-    val id: Long?,
+    val planId: Long,
     val startDate: ZonedDateTime,
     val endDate: ZonedDateTime,
     val title: String,
-    val detailContent : String
+    val todoList: List<String>
 
 ) {
     companion object {
-        fun fromEntity(plan: Plan, planTodoList: PlanTodoList): PlanResponse {
+        fun fromEntity(plan: Plan, todoList: List<PlanTodoList>): PlanResponse {
             return PlanResponse(
-                id = plan.id,
+                planId = plan.id,
                 startDate = plan.startDate,
                 endDate = plan.endDate,
                 title = plan.title,
-                detailContent = planTodoList.detailContent
+                todoList = todoList.map { todo -> todo.detailContent }
             )
         }
     }
