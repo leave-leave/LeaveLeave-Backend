@@ -1,13 +1,8 @@
 package com.example.leaveleave.domain.plan.presentation
 
-import com.example.leaveleave.domain.plan.domain.PlanTodoList
-import com.example.leaveleave.domain.plan.domain.repository.PlanTodoRepository
 import com.example.leaveleave.domain.plan.presentation.dto.request.PlanTodoListRequest
-import com.example.leaveleave.domain.plan.presentation.dto.request.PlanTodoRequest
-import com.example.leaveleave.domain.plan.presentation.dto.response.PlanTodoListResponse
 import com.example.leaveleave.domain.plan.service.PlanService
 import org.springframework.http.HttpStatus
-import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
@@ -24,24 +19,18 @@ class PlanTodoController(
 ) {
     @PostMapping("/{plan-id}")
     @ResponseStatus(HttpStatus.CREATED)
-    fun createTodo(@PathVariable("plan-id") @RequestBody planTodoListRequest: PlanTodoListRequest) {
+    fun createTodo(@PathVariable("plan-id") planId: Long, @RequestBody planTodoListRequest: PlanTodoListRequest) {
         val responses = planTodoListRequest.todo.map { planTodoRequest ->
             planService.addTodo(
-                planTodoRequest.planId!!,
+                planId,
                 planTodoRequest.detailContent,
-                planTodoRequest.todoId!!
+                planTodoRequest.todoId
             )
         }
     }
 
-    @GetMapping("{plan-id}")
-    @ResponseStatus(HttpStatus.OK)
-    fun getTodoList(@PathVariable("plan-id") planId: Long) {
-        planService.getTodoPlanId(planId)
-    }
-
     @DeleteMapping("/{todo-id}")
-    @ResponseStatus(HttpStatus.OK)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     fun deleteTodo(@PathVariable("todo-id") todoId: Long) {
         return planService.deleteTodo(todoId)
     }
