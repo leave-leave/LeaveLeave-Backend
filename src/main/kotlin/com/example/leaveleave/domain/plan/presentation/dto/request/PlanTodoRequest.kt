@@ -8,3 +8,7 @@ data class PlanTodoRequest(
     val planId : Long,
     val todoId: Long
 )
+
+data class PlanTodoListRequest(
+     val todo : List<PlanTodoRequest> = emptyList()
+)
