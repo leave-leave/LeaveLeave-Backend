@@ -1,6 +1,8 @@
 package com.example.leaveleave.domain.plan.presentation
 
 import com.example.leaveleave.domain.plan.domain.PlanTodoList
+import com.example.leaveleave.domain.plan.domain.repository.PlanTodoRepository
+import com.example.leaveleave.domain.plan.presentation.dto.request.PlanTodoListRequest
 import com.example.leaveleave.domain.plan.presentation.dto.request.PlanTodoRequest
 import com.example.leaveleave.domain.plan.presentation.dto.response.PlanTodoListResponse
 import com.example.leaveleave.domain.plan.service.PlanService
@@ -18,16 +20,18 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 @RequestMapping("/todo")
 class PlanTodoController(
-    private val planService: PlanService
+    private val planService: PlanService,
 ) {
-    @PostMapping()
+    @PostMapping("/{plan-id}")
     @ResponseStatus(HttpStatus.CREATED)
-    fun createTodo(@RequestBody planTodoRequest: PlanTodoRequest) {
-        planService.addTodo(
-            detailContent = planTodoRequest.detailContent,
-            planId = planTodoRequest.planId,
-            todoId = planTodoRequest.todoId
-        )
+    fun createTodo(@PathVariable("plan-id") @RequestBody planTodoListRequest: PlanTodoListRequest) {
+        val responses = planTodoListRequest.todo.map { planTodoRequest ->
+            planService.addTodo(
+                planTodoRequest.planId!!,
+                planTodoRequest.detailContent,
+                planTodoRequest.todoId!!
+            )
+        }
     }
 
     @GetMapping("{plan-id}")
