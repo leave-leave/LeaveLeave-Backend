@@ -6,4 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository
 
 interface PlanTodoRepository : JpaRepository <PlanTodoList, Long> {
     fun getAllByPlanId(planId: Long): List<PlanTodoList>
+
+    fun findAllByPlanId(planId: Long): List<PlanTodoList>
 }
