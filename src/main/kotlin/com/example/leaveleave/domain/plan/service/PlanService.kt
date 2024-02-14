@@ -30,11 +30,6 @@ class PlanService(
             endDate = planRequest.endDate
         )
         val savedPlan = planRepository.save(newPlan)
-
-        planRequest.todos.forEach { todo ->
-            val newTodoPlan = PlanTodoList(detailContent = todo.detailContent, plan = savedPlan)
-            planTodoRepository.save(newTodoPlan)
-        }
     }
 
     fun getPlanById(planId: Long): Plan {
@@ -56,6 +51,7 @@ class PlanService(
         planRepository.deleteById(planId)
     }
 
+    @Transactional
     fun addTodo(planId: Long, detailContent: String, todoId: Long): PlanTodoListResponse {
         val plan = planRepository.findById(planId).orElseThrow {
             NoSuchElementException("계획 아이디가 존재하지 않음 $planId")
