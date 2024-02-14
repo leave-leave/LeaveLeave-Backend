@@ -9,5 +9,4 @@ data class PlanRequest(
     val endDate: ZonedDateTime,
     @JsonProperty("title")
     val title: String,
-    val todos: List<PlanTodoRequest> = emptyList()
 )
