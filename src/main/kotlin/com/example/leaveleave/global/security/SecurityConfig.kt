@@ -19,7 +19,7 @@ import org.springframework.security.web.SecurityFilterChain
 class SecurityConfig(
     private val objectMapper: ObjectMapper,
     private val tokenProvider: TokenProvider,
-    ){
+) {
     @Bean
     fun filterChain(http: HttpSecurity): SecurityFilterChain {
         return http
@@ -39,6 +39,7 @@ class SecurityConfig(
             .and().apply(FilterConfig(objectMapper, tokenProvider))
             .and().build()
     }
+
     @Bean
     fun passwordEncoder(): PasswordEncoder = BCryptPasswordEncoder()
 

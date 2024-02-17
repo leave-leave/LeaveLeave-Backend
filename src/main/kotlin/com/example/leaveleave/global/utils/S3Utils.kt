@@ -29,7 +29,7 @@ class S3Utils(
                 CannedAccessControlList.PublicRead
             )
         )
-        return s3Client.getResourceUrl(bucketName,fileName)
+        return s3Client.getResourceUrl(bucketName, fileName)
 
     }
 

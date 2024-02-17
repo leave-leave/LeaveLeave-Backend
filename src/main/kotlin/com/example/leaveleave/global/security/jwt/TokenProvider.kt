@@ -91,7 +91,7 @@ class TokenProvider(
         return try {
             val claims = Jwts.parser().setSigningKey(tokenProperties.secretKey).parseClaimsJws(token).body
             true
-        } catch (e: Exception){
+        } catch (e: Exception) {
             false
         }
     }

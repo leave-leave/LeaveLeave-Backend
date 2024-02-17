@@ -6,8 +6,8 @@ class ErrorResponse(
     val status: Int,
     val message: String,
 ) {
-    companion object{
-        fun of(e : LeaveLeaveException) : ErrorResponse {
+    companion object {
+        fun of(e: LeaveLeaveException): ErrorResponse {
             return ErrorResponse(e.status, e.message)
         }
     }

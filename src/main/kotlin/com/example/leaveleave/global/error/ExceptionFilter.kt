@@ -22,17 +22,18 @@ class ExceptionFilter(
         filterChain: FilterChain
     ) {
         try {
-            filterChain.doFilter(request,response)
-        } catch (e : Exception){
+            filterChain.doFilter(request, response)
+        } catch (e: Exception) {
             e.printStackTrace()
-            when(e){
+            when (e) {
                 is LeaveLeaveException -> writeErrorCode(e, response)
                 else -> writeErrorCode(InternalServerError, response)
             }
         }
     }
+
     @Throws(IOException::class)
-    private fun writeErrorCode(exception: LeaveLeaveException, response: HttpServletResponse){
+    private fun writeErrorCode(exception: LeaveLeaveException, response: HttpServletResponse) {
         val errorResponse = ErrorResponse.of(exception)
 
         response.contentType = MediaType.APPLICATION_JSON_VALUE

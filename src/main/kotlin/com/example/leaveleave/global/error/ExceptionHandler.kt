@@ -13,16 +13,16 @@ import org.springframework.http.HttpStatus
 @RestControllerAdvice
 class ExceptionHandler {
     @ExceptionHandler(LeaveLeaveException::class)
-    fun customExceptionHandling(e: LeaveLeaveException): ResponseEntity<ErrorResponse>{
+    fun customExceptionHandling(e: LeaveLeaveException): ResponseEntity<ErrorResponse> {
         return ResponseEntity(ErrorResponse.of(e), HttpStatus.valueOf(e.status))
     }
 
     @ExceptionHandler(BindException::class)
-    fun handleBindException(e: BindException): ResponseEntity<Map<String, String?>>{
+    fun handleBindException(e: BindException): ResponseEntity<Map<String, String?>> {
         val errorMap: MutableMap<String, String?> = HashMap()
-        for(error in e.fieldErrors){
+        for (error in e.fieldErrors) {
             errorMap[error.field] = error.defaultMessage
         }
-        return ResponseEntity<Map<String,String?>>(errorMap, BAD_REQUEST)
+        return ResponseEntity<Map<String, String?>>(errorMap, BAD_REQUEST)
     }
 }

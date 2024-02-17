@@ -31,13 +31,13 @@ class FeedController(
     private val getLikeFeedListService: GetLikeFeedListService,
     private val getFeedListService: GetFeedListService
 ) {
-    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
     fun createFeed(@RequestBody @Valid request: CreateFeedRequest) {
         createFeedService.execute(request)
     }
 
-    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @ResponseStatus(HttpStatus.OK)
     @PatchMapping("/{feed-id}")
     fun updateFeed(@PathVariable("feed-id") feedId: Long, @RequestBody @Valid request: UpdateFeedRequest) {
         updateFeedService.execute(feedId, request)
