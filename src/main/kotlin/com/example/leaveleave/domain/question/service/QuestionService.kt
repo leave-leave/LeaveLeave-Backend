@@ -19,7 +19,7 @@ class QuestionService(
 
     fun postQuestionAnswer(questionAnswerRequest: QuestionAnswerRequest){
         val questionAnswer = QuestionAnswer(
-            questionAnswerRequest.id,
+            questionAnswerRequest.user,
             questionAnswerRequest.questionAnswer,
             questionAnswerRequest.accountId,
             questionAnswerRequest.question

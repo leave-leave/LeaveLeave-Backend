@@ -8,11 +8,11 @@ import javax.persistence.*
 data class Question(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val questionId: Long,
+    val id: Long,
 
     @Column(columnDefinition = "varchar(255)")
     val question: String,
 
-    @OneToMany(mappedBy = "questionAnswer", cascade = [CascadeType.ALL], orphanRemoval = true)
+    @OneToMany(mappedBy = "question", cascade = [CascadeType.ALL], orphanRemoval = true)
     val questionAnswer: MutableList<QuestionAnswer> = mutableListOf(),
 )
