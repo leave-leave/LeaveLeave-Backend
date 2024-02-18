@@ -1,10 +1,7 @@
 package com.example.leaveleave.domain.question.domain
 
-import javax.persistence.Column
-import javax.persistence.Entity
-import javax.persistence.GeneratedValue
-import javax.persistence.GenerationType
-import javax.persistence.Id
+import com.example.leaveleave.domain.user.domain.User
+import javax.persistence.*
 
 
 @Entity(name = "tbl_question")
@@ -14,5 +11,8 @@ data class Question(
     val questionId: Long,
 
     @Column(columnDefinition = "varchar(255)")
-    val question: String
+    val question: String,
+
+    @OneToMany(mappedBy = "questionAnswer", cascade = [CascadeType.ALL], orphanRemoval = true)
+    val questionAnswer: MutableList<QuestionAnswer> = mutableListOf(),
 )
