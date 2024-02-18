@@ -1,6 +1,11 @@
 package com.example.leaveleave.domain.question.presentation.dto.request
 
-class QuestionAnswerRequest (
-    val accountId: String,
-    val questionAnswer: Boolean
+import com.example.leaveleave.domain.question.domain.Question
+import com.example.leaveleave.domain.user.domain.User
+
+data class QuestionAnswerRequest (
+    val id: Long,
+    val questionAnswer: Boolean,
+    val accountId: User,
+    val question: Question
 )
