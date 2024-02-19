@@ -56,6 +56,8 @@ dependencies {
 
     // coolSms
     implementation ("net.nurigo:javaSDK:2.2")
+
+    implementation ("jakarta.interceptor:jakarta.interceptor-api:1.2.5")
 }
 
 tasks.withType<KotlinCompile> {
