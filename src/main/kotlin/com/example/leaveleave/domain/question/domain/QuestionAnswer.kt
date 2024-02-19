@@ -1,6 +1,5 @@
 package com.example.leaveleave.domain.question.domain
 
-import com.example.leaveleave.domain.plan.domain.Plan
 import com.example.leaveleave.domain.user.domain.User
 import javax.persistence.*
 
@@ -8,9 +7,9 @@ import javax.persistence.*
 class QuestionAnswer(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long,
+    val id: Long?,
 
-    @Column
+    @Column(name = "question_answer" , columnDefinition = "boolean")
     val questionAnswer: Boolean,
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -19,12 +18,6 @@ class QuestionAnswer(
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "question_id")
-    var question: Question
-) {
-    constructor(questionAnswer: Boolean, accountId: User, question: Question) : this(
-        0,
-        questionAnswer = true,
-        accountId,
-        question
+    var question: Question,
+
     )
-}
