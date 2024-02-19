@@ -7,9 +7,9 @@ import javax.persistence.*
 class QuestionAnswer(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long?,
+    val id: Long,
 
-    @Column(name = "question_answer" , columnDefinition = "boolean")
+    @Column(name = "question_answer" , columnDefinition = "BOOLEAN")
     val questionAnswer: Boolean,
 
     @ManyToOne(fetch = FetchType.LAZY)
