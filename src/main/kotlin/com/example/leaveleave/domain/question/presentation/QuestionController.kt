@@ -22,13 +22,13 @@ class QuestionController(
         return questionService.getQuestion()
     }
 
-    @PostMapping("/{account-id}")
+    @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
     fun postQuestionAnswer(questionAnswerRequest: QuestionAnswerRequest){
         return questionService.postQuestionAnswer(questionAnswerRequest)
     }
 
-    @GetMapping("/{account-id}")
+    @GetMapping("/answer")
     @ResponseStatus(HttpStatus.OK)
     fun getQuestionAnswer(): MutableList<QuestionAnswer>{
         return questionService.getQuestionAnswer()
