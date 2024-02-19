@@ -1,11 +1,11 @@
 package com.example.leaveleave.domain.question.presentation.dto.request
 
-import com.example.leaveleave.domain.question.domain.Question
-import com.example.leaveleave.domain.user.domain.User
 
-data class QuestionAnswerRequest (
-    val user: Long,
+data class QuestionAnswerPair(
+    val questionId: Long,
     val questionAnswer: Boolean,
-    val accountId: User,
-    val question: Question
+)
+
+data class QuestionAnswerRequest(
+    val answers: List<QuestionAnswerPair>?,
 )
