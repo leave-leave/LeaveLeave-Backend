@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional
 import java.time.LocalDateTime
 
 @Service
-data class CreateFeedService(
+class CreateFeedService(
     private val feedRepository: FeedRepository,
     private val userFacade: UserFacade,
 ) {
