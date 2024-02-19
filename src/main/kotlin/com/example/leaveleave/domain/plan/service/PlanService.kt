@@ -36,7 +36,6 @@ class PlanService(
             NoSuchElementException("계획을 찾을 수 없음 $planId")
         }
         val todoList = planTodoRepository.findAllByPlanId(planId)
-        println(PlanResponse.fromEntity(plan,todoList))
         return PlanResponse.fromEntity(plan,todoList)
     }
 
