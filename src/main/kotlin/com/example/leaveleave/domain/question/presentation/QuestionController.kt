@@ -25,13 +25,13 @@ class QuestionController(
 
     @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
-    fun postQuestionAnswer(@RequestBody questionAnswerRequest: QuestionAnswerRequest){
+    fun postQuestionAnswer(@RequestBody questionAnswerRequest: QuestionAnswerRequest) {
         return questionService.postQuestionAnswer(questionAnswerRequest)
     }
 
     @GetMapping("/answer")
     @ResponseStatus(HttpStatus.OK)
-    fun getQuestionAnswer(): MutableList<QuestionAnswer>{
+    fun getQuestionAnswer(): MutableList<QuestionAnswer> {
         return questionService.getQuestionAnswer()
     }
 }

@@ -31,12 +31,12 @@ class PlanService(
         val savedPlan = planRepository.save(newPlan)
     }
 
-    fun getPlanAndTodoListById(planId: Long): PlanResponse{
-        val plan = planRepository.findById(planId).orElseThrow{
+    fun getPlanAndTodoListById(planId: Long): PlanResponse {
+        val plan = planRepository.findById(planId).orElseThrow {
             NoSuchElementException("계획을 찾을 수 없음 $planId")
         }
         val todoList = planTodoRepository.findAllByPlanId(planId)
-        return PlanResponse.fromEntity(plan,todoList)
+        return PlanResponse.fromEntity(plan, todoList)
     }
 
 
@@ -44,7 +44,6 @@ class PlanService(
         planTodoRepository.getAllByPlanId(planId)
         planRepository.deleteById(planId)
     }
-
     @Transactional
     fun addTodo(planId: Long, detailContent: String, todoId: Long): TodoResponse {
         val plan = planRepository.findById(planId).orElseThrow {

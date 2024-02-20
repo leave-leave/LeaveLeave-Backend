@@ -6,6 +6,6 @@ import com.example.leaveleave.domain.user.domain.User
 
 data class QuestionAnswerResponse(
     val accountId: User,
-    val answers : List<QuestionAnswerPair>
+    val answers: List<QuestionAnswerPair>
 )
 

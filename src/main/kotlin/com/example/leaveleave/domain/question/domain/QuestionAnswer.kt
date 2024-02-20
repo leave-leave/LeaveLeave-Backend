@@ -9,7 +9,7 @@ class QuestionAnswer(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long,
 
-    @Column(name = "question_answer" , columnDefinition = "BOOLEAN")
+    @Column(name = "question_answer", columnDefinition = "BOOLEAN")
     val questionAnswer: Boolean,
 
     @ManyToOne(fetch = FetchType.LAZY)
