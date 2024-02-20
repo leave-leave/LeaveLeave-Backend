@@ -6,4 +6,5 @@ import com.example.leaveleave.domain.user.domain.User
 import org.springframework.data.jpa.repository.JpaRepository
 
 interface QuestionAnswerRepository : JpaRepository<QuestionAnswer, Long> {
+    fun findByUser(accountId: User): Long
 }
