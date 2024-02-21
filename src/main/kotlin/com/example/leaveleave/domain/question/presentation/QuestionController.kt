@@ -3,6 +3,7 @@ package com.example.leaveleave.domain.question.presentation
 import com.example.leaveleave.domain.question.domain.Question
 import com.example.leaveleave.domain.question.domain.QuestionAnswer
 import com.example.leaveleave.domain.question.presentation.dto.request.QuestionAnswerRequest
+import com.example.leaveleave.domain.question.presentation.dto.response.QuestionAnswerResponse
 import com.example.leaveleave.domain.question.service.QuestionService
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.GetMapping
@@ -31,7 +32,7 @@ class QuestionController(
 
     @GetMapping("/answer")
     @ResponseStatus(HttpStatus.OK)
-    fun getQuestionAnswer(): MutableList<QuestionAnswer> {
+    fun getQuestionAnswers(): QuestionAnswerResponse {
         return questionService.getQuestionAnswer()
     }
 }
