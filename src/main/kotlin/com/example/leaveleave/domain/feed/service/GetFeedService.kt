@@ -15,7 +15,7 @@ data class GetFeedService(
     @Transactional
     fun getFeedWithComment(feedId: Long): Feed {
         val feed = feedRepository.findById(feedId)
-            .orElseThrow { (EntityNotFoundException("Feed not found with id : $feedId")) }
+            .orElseThrow { (EntityNotFoundException("게시물 아이디를 찾을 수 없음 : $feedId")) }
 
         val comments = commentRepository.findById(feedId)
 
