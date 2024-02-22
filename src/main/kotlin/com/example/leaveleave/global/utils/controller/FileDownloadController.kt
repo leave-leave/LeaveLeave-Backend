@@ -14,7 +14,7 @@ class FileDownloadController {
     @Autowired
     private lateinit var amazonS3: AmazonS3
 
-    @GetMapping("/downloadImage")
+    @GetMapping("upload")
     fun downloadImage(@RequestParam originalFilename: String): ResponseEntity<UrlResource> {
         val bucket = "leaveleave"
 
