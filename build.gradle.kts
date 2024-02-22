@@ -58,6 +58,9 @@ dependencies {
     implementation ("net.nurigo:javaSDK:2.2")
 
     implementation ("jakarta.interceptor:jakarta.interceptor-api:1.2.5")
+
+    // S3
+    implementation ("org.springframework.cloud:spring-cloud-starter-aws:2.2.6.RELEASE")
 }
 
 tasks.withType<KotlinCompile> {
