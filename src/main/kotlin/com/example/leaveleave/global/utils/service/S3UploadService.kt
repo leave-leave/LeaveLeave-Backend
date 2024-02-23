@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Service
 import org.springframework.web.multipart.MultipartFile
 import java.io.IOException
+import java.util.UUID
 
 @Service
 class S3UploadService(
@@ -15,9 +16,8 @@ class S3UploadService(
     private val bucket: String
 ) {
 
-    @Throws(IOException::class)
     fun saveFile(multipartFile: MultipartFile): String {
-        val originalFilename = multipartFile.originalFilename ?: throw IllegalStateException("File name cannot be null")
+        val originalFilename = UUID.randomUUID().toString()
 
         val metadata = ObjectMetadata().apply {
             contentLength = multipartFile.size
