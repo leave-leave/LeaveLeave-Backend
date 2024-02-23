@@ -54,3 +54,10 @@ cloud:
       auto: false
     stack:
       auto: false
+
+logging:
+  level:
+    com:
+      amazonaws:
+        util:
+          EC2MetadataUtils: error
