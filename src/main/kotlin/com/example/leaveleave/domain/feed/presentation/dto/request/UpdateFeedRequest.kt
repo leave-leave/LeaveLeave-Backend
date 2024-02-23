@@ -8,4 +8,7 @@ data class UpdateFeedRequest(
 
     @field:Size(max = 500, message = "500자까지 가능합니다.")
     val content: String,
+
+    @field:Size(max = 200, message = "200자까지 가능합니다.")
+    val imageUrl: String
 )

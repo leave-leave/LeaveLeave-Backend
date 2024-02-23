@@ -12,4 +12,8 @@ data class CreateFeedRequest(
     @field:NotNull(message = "null 허용하지 않습니다.")
     @field:Size(max = 500, message = "500자까지 가능합니다.")
     val content: String,
+
+    @field:NotNull(message = "null 허용하지 않습니다.")
+    @field:Size(max = 200, message = "200자까지 가능합니다.")
+    val imageUrl: String
 )
