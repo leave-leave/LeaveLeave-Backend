@@ -19,6 +19,6 @@ data class UpdateFeedService(
         if (user != feed.user) {
             throw IncorrectUserException
         }
-        feed.updateFeed(request.title, request.content)
+        feed.updateFeed(request.title, request.content, request.imageUrl)
     }
 }

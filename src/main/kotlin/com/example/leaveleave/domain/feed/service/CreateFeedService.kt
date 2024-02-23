@@ -23,6 +23,7 @@ class CreateFeedService(
                 request.title,
                 request.content,
                 LocalDateTime.now(),
+                request.imageUrl
             )
         )
     }
