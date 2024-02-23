@@ -50,6 +50,7 @@ data class FeedListResponse(
                     title = feed.title,
                     content = feed.content,
                     user = FeedListUserResponse.format(feed.user),
+//                    imageUrl = FeedListUserResponse.format(feed.),
                     userLike = feed.likeList.find { like -> like.user.accountId.equals(accountId) } === null,
                     likeCount = feed.likeList.count(),
                     commentCount = feed.commentList.count(),
