@@ -29,6 +29,9 @@ class Feed(
 
     val createdAt: LocalDateTime,
 
+    @Column(name = "image_url", columnDefinition = "VARCHAR(200)", nullable = false)
+    var imageUrl: String,
+
     @OneToMany(mappedBy = "feed", cascade = [CascadeType.ALL], orphanRemoval = true)
     val likeList: MutableList<Like> = mutableListOf(),
 
@@ -36,8 +39,9 @@ class Feed(
     @OneToMany(mappedBy = "feed", cascade = [CascadeType.ALL], orphanRemoval = true)
     val commentList: MutableList<Comment> = mutableListOf(),
 ){
-    fun updateFeed(title: String,content: String){
+    fun updateFeed(title: String,content: String,imageUrl: String){
         this.title = title
         this.content = content
+        this.imageUrl = imageUrl
     }
 }
