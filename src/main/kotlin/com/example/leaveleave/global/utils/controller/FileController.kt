@@ -17,7 +17,7 @@ class FileController(
     private val s3UploadService: S3UploadService
 ) {
     @PostMapping("/upload")
-    fun saveFile(@RequestParam("file") multiPartFile: MultipartFile): FileUploadResponse{
+    fun saveFile(@RequestParam("file") multiPartFile: MultipartFile): FileUploadResponse {
         val fileUrl = s3UploadService.saveFile(multiPartFile)
         return FileUploadResponse(fileUrl)
     }
