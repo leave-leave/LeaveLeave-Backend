@@ -25,11 +25,4 @@ class SignInService(
         }
         return tokenProvider.generateToken(user.accountId)
     }
-
-    fun checkUser(request: SignInRequest){
-        val accountId = request.accountId
-        if (userFacade.checkAccountIdExist(accountId)) {
-            throw AlreadyAccountIdException
-        }
-    }
 }
