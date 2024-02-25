@@ -57,7 +57,7 @@ class UserController(
     }
     @GetMapping("/{account-id}")
     fun checkUser(@PathVariable("account-id") accountId: String) {
-        return signUpService.checkUser(accountId)
+        return signInService.checkUser(accountId)
     }
 
 
