@@ -1,6 +1,7 @@
 package com.example.leaveleave.domain.user.service
 
 import com.example.leaveleave.domain.user.domain.repository.UserRepository
+import com.example.leaveleave.domain.user.exception.AlreadyAccountIdException
 import com.example.leaveleave.domain.user.exception.IncorrectPasswordException
 import com.example.leaveleave.domain.user.facade.UserFacade
 import com.example.leaveleave.domain.user.presentation.dto.request.SignInRequest
@@ -19,9 +20,16 @@ class SignInService(
     @Transactional
     fun execute(request: SignInRequest): TokenResponse {
         val user = userFacade.getByAccountId(request.accountId)
+        checkUser(request.accountId)
         if (!passwordEncoder.matches(request.password, user.password)) {
             throw IncorrectPasswordException
         }
         return tokenProvider.generateToken(user.accountId)
+    }
+
+    fun checkUser(accountId: String) {
+        if (userFacade.checkAccountIdExist(accountId)) {
+            throw AlreadyAccountIdException
+        }
     }
 }
