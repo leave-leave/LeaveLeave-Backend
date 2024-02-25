@@ -4,27 +4,36 @@ import com.example.leaveleave.domain.user.domain.User
 import com.example.leaveleave.domain.user.domain.repository.UserRepository
 import com.example.leaveleave.domain.user.exception.AlreadyAccountIdException
 import com.example.leaveleave.domain.user.facade.UserFacade
+import com.example.leaveleave.domain.user.presentation.dto.request.SignInRequest
 import com.example.leaveleave.domain.user.presentation.dto.request.SignUpRequest
+import org.springframework.http.HttpStatus
 import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
+import org.springframework.web.server.ResponseStatusException
+import java.util.NoSuchElementException
 
 @Service
 class SignUpService(
     private val userRepository: UserRepository,
-    private val userFacade: UserFacade,
     private val passwordEncoder: PasswordEncoder,
+    private val userFacade: UserFacade
 ) {
     @Transactional
     fun execute(request: SignUpRequest) {
-        userRepository.save(
-            User(
+        if(!checkUser(request.accountId)){
+            val newUser = User(
                 request.accountId,
                 passwordEncoder.encode(request.password),
                 request.name,
                 request.phoneNumber
             )
-        )
+            userRepository.save(newUser)
+        } else {
+            throw ResponseStatusException(HttpStatus.CONFLICT,"이미 존재하는 ${request.accountId} 아이디 입니다.")
+        }
     }
-
+    fun checkUser(accountId : String): Boolean{
+        return userRepository.existsByAccountId(accountId)
+    }
 }
