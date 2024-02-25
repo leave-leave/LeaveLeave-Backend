@@ -20,14 +20,14 @@ class SignInService(
     @Transactional
     fun execute(request: SignInRequest): TokenResponse {
         val user = userFacade.getByAccountId(request.accountId)
-        checkUser(request.accountId)
         if (!passwordEncoder.matches(request.password, user.password)) {
             throw IncorrectPasswordException
         }
         return tokenProvider.generateToken(user.accountId)
     }
 
-    fun checkUser(accountId: String) {
+    fun checkUser(request: SignInRequest){
+        val accountId = request.accountId
         if (userFacade.checkAccountIdExist(accountId)) {
             throw AlreadyAccountIdException
         }
