@@ -16,8 +16,7 @@ import java.util.NoSuchElementException
 @Service
 class SignUpService(
     private val userRepository: UserRepository,
-    private val passwordEncoder: PasswordEncoder,
-    private val userFacade: UserFacade
+    private val passwordEncoder: PasswordEncoder
 ) {
     @Transactional
     fun execute(request: SignUpRequest) {
