@@ -29,8 +29,7 @@ class UserController(
     private val signUpService: SignUpService,
     private val signInService: SignInService,
     private val userInfoService: UserInfoService,
-    private val tokenProvider: TokenProvider,
-    private val userFacade: UserFacade
+    private val tokenProvider: TokenProvider
 ) {
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/signup")
@@ -58,12 +57,8 @@ class UserController(
 
     }
     @GetMapping("/{account-id}")
-    fun checkUser(@PathVariable("account-id") accountId: String): ResponseEntity<String>{
-        if (userFacade.checkAccountIdExist(accountId)){
-            return ResponseEntity.status(HttpStatus.CONFLICT).body("이미 존재하는 $accountId 입니다")
-        } else{
-            return ResponseEntity.ok("사용 가능한 $accountId 입니다")
-        }
+    fun checkUser(@PathVariable("account-id") accountId: String):Boolean{
+        return signUpService.checkUser(accountId)
     }
 
 
