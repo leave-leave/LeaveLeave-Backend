@@ -17,7 +17,6 @@ class SignUpService(
 ) {
     @Transactional
     fun execute(request: SignUpRequest) {
-        checkUser(request.accountId)
         userRepository.save(
             User(
                 request.accountId,
@@ -28,9 +27,4 @@ class SignUpService(
         )
     }
 
-    fun checkUser(accountId: String) {
-        if (userFacade.checkAccountIdExist(accountId)) {
-            throw AlreadyAccountIdException
-        }
-    }
 }
