@@ -20,7 +20,7 @@ class SignUpService(
 ) {
     @Transactional
     fun execute(request: SignUpRequest) {
-        if(!checkUser(request.accountId)){
+        if (!checkUser(request.accountId)) {
             val newUser = User(
                 request.accountId,
                 passwordEncoder.encode(request.password),
@@ -29,10 +29,11 @@ class SignUpService(
             )
             userRepository.save(newUser)
         } else {
-            throw ResponseStatusException(HttpStatus.CONFLICT,"이미 존재하는 ${request.accountId} 아이디 입니다.")
+            throw ResponseStatusException(HttpStatus.CONFLICT, "이미 존재하는 ${request.accountId} 아이디 입니다.")
         }
     }
-    fun checkUser(accountId : String): Boolean{
+
+    fun checkUser(accountId: String): Boolean {
         return userRepository.existsByAccountId(accountId)
     }
 }
