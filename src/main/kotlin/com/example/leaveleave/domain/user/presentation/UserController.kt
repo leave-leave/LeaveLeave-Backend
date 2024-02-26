@@ -42,22 +42,24 @@ class UserController(
     fun login(@RequestBody @Valid request: SignInRequest): TokenResponse {
         return signInService.execute(request)
     }
+
     @ResponseStatus(HttpStatus.OK)
     @PostMapping("token")
-    fun refreshToken(@RequestHeader("Authorization") authorization: String): ResponseEntity<Any>{
+    fun refreshToken(@RequestHeader("Authorization") authorization: String): ResponseEntity<Any> {
         val token = authorization.removePrefix("Bearer").trim()
 
-        return if (tokenProvider.validateToken(token)){
+        return if (tokenProvider.validateToken(token)) {
             val newToken = tokenProvider.generateToken(token)
             ResponseEntity.ok().body(mapOf("token" to newToken))
-        } else{
+        } else {
             ResponseEntity.badRequest().body("Invalid token")
         }
 
 
     }
+
     @GetMapping("/{account-id}")
-    fun checkUser(@PathVariable("account-id") accountId: String):Boolean{
+    fun checkUser(@PathVariable("account-id") accountId: String): Boolean {
         return signUpService.checkUser(accountId)
     }
 
