@@ -1,6 +1,5 @@
 package com.example.leaveleave.domain.user.presentation
 
-import com.example.leaveleave.domain.user.facade.UserFacade
 import com.example.leaveleave.domain.user.presentation.dto.request.SignInRequest
 import com.example.leaveleave.domain.user.presentation.dto.request.SignUpRequest
 import com.example.leaveleave.domain.user.presentation.dto.response.TokenResponse
@@ -9,7 +8,6 @@ import com.example.leaveleave.domain.user.service.SignInService
 import com.example.leaveleave.domain.user.service.SignUpService
 import com.example.leaveleave.domain.user.service.UserInfoService
 import com.example.leaveleave.global.security.jwt.TokenProvider
-import jdk.jshell.execution.Util
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
@@ -18,7 +16,6 @@ import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestHeader
 import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.ResponseStatus
 import org.springframework.web.bind.annotation.RestController
 import javax.validation.Valid

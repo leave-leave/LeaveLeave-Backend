@@ -2,16 +2,12 @@ package com.example.leaveleave.domain.user.service
 
 import com.example.leaveleave.domain.user.domain.User
 import com.example.leaveleave.domain.user.domain.repository.UserRepository
-import com.example.leaveleave.domain.user.exception.AlreadyAccountIdException
-import com.example.leaveleave.domain.user.facade.UserFacade
-import com.example.leaveleave.domain.user.presentation.dto.request.SignInRequest
 import com.example.leaveleave.domain.user.presentation.dto.request.SignUpRequest
 import org.springframework.http.HttpStatus
 import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 import org.springframework.web.server.ResponseStatusException
-import java.util.NoSuchElementException
 
 @Service
 class SignUpService(
