@@ -29,7 +29,7 @@ class FeedController(
     private val getFeedService: GetFeedService,
     private val feedRepository: FeedRepository,
     private val getLikeFeedListService: GetLikeFeedListService,
-    private val  getFeedListService: GetFeedListService
+    private val getFeedListService: GetFeedListService
 ) {
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping

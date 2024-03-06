@@ -18,7 +18,7 @@ class Feed(
     val feedId: Long?,
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "account_id",  nullable = false)
+    @JoinColumn(name = "account_id", nullable = false)
     val user: User,
 
     @Column(columnDefinition = "VARCHAR(20)", nullable = false)
@@ -38,8 +38,8 @@ class Feed(
     // TODO: orphanRemoval = true <- 이거 선빠이한테 질문하기
     @OneToMany(mappedBy = "feed", cascade = [CascadeType.ALL], orphanRemoval = true)
     val commentList: MutableList<Comment> = mutableListOf(),
-){
-    fun updateFeed(title: String,content: String,imageUrl: String){
+) {
+    fun updateFeed(title: String, content: String, imageUrl: String) {
         this.title = title
         this.content = content
         this.imageUrl = imageUrl
