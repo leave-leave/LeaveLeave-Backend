@@ -24,11 +24,13 @@ class User(
     @JsonCreator
     constructor(@JsonProperty("userId") userId: String) : this(userId, "", "", "")
 
-    fun updateUserInfo(name: String) {
-        this.name = name
-    }
-
+    @JsonProperty
     fun updatePassword(password: String) {
         this.password = password
+    }
+
+    fun updateModify(name: String, phoneNumber: String) {
+        this.phoneNumber = phoneNumber
+        this.name = name
     }
 }
