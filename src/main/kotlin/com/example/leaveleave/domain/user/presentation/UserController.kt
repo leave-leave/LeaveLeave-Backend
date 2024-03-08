@@ -2,15 +2,16 @@ package com.example.leaveleave.domain.user.presentation
 
 import com.example.leaveleave.domain.user.presentation.dto.request.SignInRequest
 import com.example.leaveleave.domain.user.presentation.dto.request.SignUpRequest
+import com.example.leaveleave.domain.user.presentation.dto.request.UpdateModifyRequest
+import com.example.leaveleave.domain.user.presentation.dto.request.UpdatePasswordRequest
 import com.example.leaveleave.domain.user.presentation.dto.response.TokenResponse
 import com.example.leaveleave.domain.user.presentation.dto.response.UserInfoResponse
-import com.example.leaveleave.domain.user.service.SignInService
-import com.example.leaveleave.domain.user.service.SignUpService
-import com.example.leaveleave.domain.user.service.UserInfoService
+import com.example.leaveleave.domain.user.service.*
 import com.example.leaveleave.global.security.jwt.TokenProvider
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PatchMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
@@ -26,7 +27,9 @@ class UserController(
     private val signUpService: SignUpService,
     private val signInService: SignInService,
     private val userInfoService: UserInfoService,
-    private val tokenProvider: TokenProvider
+    private val tokenProvider: TokenProvider,
+    private val userModifyService: UserModifyService,
+    private val updatePasswordService: UpdatePasswordService
 ) {
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/signup")
@@ -65,5 +68,17 @@ class UserController(
     @GetMapping("/user")
     fun getUserInfo(): UserInfoResponse {
         return userInfoService.execute()
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @PatchMapping("/modify")
+    fun modify(@RequestBody @Valid request: UpdateModifyRequest){
+        return userModifyService.userModify(request)
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @PatchMapping("/password")
+    fun password(@RequestBody @Valid request: UpdatePasswordRequest){
+        return updatePasswordService.updatePassword(request)
     }
 }
