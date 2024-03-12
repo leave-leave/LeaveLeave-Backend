@@ -54,8 +54,6 @@ class UserController(
         } else {
             ResponseEntity.badRequest().body("Invalid token")
         }
-
-
     }
 
     @GetMapping("/{account-id}")

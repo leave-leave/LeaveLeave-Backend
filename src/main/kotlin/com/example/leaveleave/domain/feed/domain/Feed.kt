@@ -4,7 +4,6 @@ import com.example.leaveleave.domain.comment.domain.Comment
 import com.example.leaveleave.domain.like.domain.Like
 import com.example.leaveleave.domain.user.domain.User
 import java.time.LocalDateTime
-import java.util.Optional
 import javax.persistence.*
 import javax.persistence.Column
 import javax.persistence.Entity
